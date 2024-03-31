@@ -1,11 +1,23 @@
 import styles from "./homepage.module.css";
 import Link from "next/link";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
+import Featured from "@/components/featured/Featured";
+import CategoryList from "@/components/categoryList/CategoryList";
+import CardList from "@/components/cardList/CardList";
+import Menu from "@/components/menu/Menu";
 
 export default function Home() {
-  return <div>
-    <Link href="/">
-      <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?</h1>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore esse reprehenderit sunt, animi est et laborum repellat modi eligendi eius?
-    </Link>
-  </div>
+  return (
+    <div>
+      <div className={styles.container}>
+        <Featured/>
+        <CategoryList/>
+        <div className={styles.content}>
+          <CardList/>
+          <Menu/>
+        </div>
+      </div>
+    </div>
+  );
 }
