@@ -1,18 +1,42 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import Link from 'next/link';
 import styles from "./authLinks.module.css"
 
 const AuthLinks = () => {
+  const [open, setOpen] = useState(false)
+
   // temporary
-  const status = "noauthenticated"
+  const status = "notauthenticated"
   return <>
-    {status === "noauthenticated" ? (
-      <Link href="/login">Login</Link>
+    {status === "notauthenticated" ? (
+      <Link href="/login" className={styles.link}>Login</Link>
     ) : (
       <>
-        <Link href="/write">Write</Link>
+        <Link href="/write" className={styles.link}>Write</Link>
         <span className={styles.links}>Logout</span>
       </>
+    )}
+    <div className={styles.burger} onClick={()=>setOpen(!open)}>
+      <div className={styles.line}></div>
+      <div className={styles.line}></div>
+      <div className={styles.line}></div>
+    </div>
+    { open && (
+        <div className={styles.responsiveMenu}>
+          <Link href="/">Homepage</Link>
+          <Link href="/">Contact</Link>
+          <Link href="/">About</Link>
+          {status === "notauthenticated" ? (
+            <Link href="/login">Login</Link>
+          ) : (
+            <>
+              <Link href="/write">Write</Link>
+              <span className={styles.links}>Logout</span>
+            </>
+          )}
+        </div>
     )}
   </>
 };
