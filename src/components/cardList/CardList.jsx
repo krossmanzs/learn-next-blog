@@ -11,7 +11,7 @@ const getData = async (page) => {
 
   if(!res.ok) {
     throw new Error("Failed")
-  }
+}
 
   return res.json()
 }
@@ -19,15 +19,22 @@ const getData = async (page) => {
 
 const CardList = async({page}) => {
 
-  const data = await getData(page)
+  const {posts, count} = await getData(page);
+
+  const POST_PER_PAGE = 2;
+
+  const hasPrev = POST_PER_PAGE * (page-1) > 0;
+  const hasNext = POST_PER_PAGE * (page-1) + POST_PER_PAGE < count;
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Posts</h1>
       <div className={styles.posts}>
-        <Card/>
+        {posts?.map((item) => (
+          <Card item={item} key={item._id} />
+        ))}
       </div>
-      <Pagination/>
+      <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext}/>
     </div>
   )
 }
